@@ -29,7 +29,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         return Static.instance
     }
     
-    func homeTimelineWithParams(params: HomeTimelineParams?, completion: HomeTimelineCompletion) {
+    func getHomeTimelineWithParams(params: HomeTimelineParams?, completion: HomeTimelineCompletion) {
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let tweetInfoArray = response as [NSDictionary]
             let tweets = map(tweetInfoArray, { (tweetInfo) in

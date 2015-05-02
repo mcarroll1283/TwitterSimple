@@ -15,12 +15,13 @@ class TweetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Move this into Tweet model to hide TwitterClient from view controllers
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> Void in
-            println("in TweetsViewController with home timeline tweets")
-            self.tweets = tweets
+        Tweet.getHomeTimelineWithParams(nil, completion: { (tweets, error) in
+            if tweets != nil {
+                self.tweets = tweets
+                println("got \(tweets!.count) tweets in TweetsViewController")
+            }
             // TODO: the following line, when table view is setup
-            // self.tableView.reloadData
+            // self.tableView.reloadData()
         })
     }
 
