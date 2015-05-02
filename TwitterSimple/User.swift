@@ -13,6 +13,8 @@ let currentUserKey = "_cu"
 let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
 
+typealias LoginCurrentUserCompletion = ((error: NSError?) -> Void)
+
 class User: NSObject {
     var name: String?
     var screenname: String?
@@ -63,5 +65,19 @@ class User: NSObject {
         User.currentUser = nil
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
         NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+    }
+    
+    class func loginCurrentUser(completion: LoginCurrentUserCompletion) {
+        TwitterClient.sharedInstance.login { (userData, error) -> Void in
+            if userData != nil {
+                let user = User(dictionary: userData!)
+                println("Current user is now \(user.name)")
+                User.currentUser = user
+                completion(error: nil)
+            } else {
+                completion(error: error!)
+            }
+
+        }
     }
 }

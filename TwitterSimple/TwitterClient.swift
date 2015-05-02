@@ -13,7 +13,7 @@ let twitterConsumerKey = "rhwa6TfK0ux5qMp8XZgn23NlP"
 let twitterConsumerSecret = "oFYWH8469ljrj5eNuhujIvfgxLEztEvfjw2YvOH2s50zCOfEWN"
 let twitterBaseURL  = NSURL(string: "https://api.twitter.com")
 
-typealias LoginCompletion = ((user: User?, error: NSError?) -> Void)
+typealias LoginCompletion = ((userData: NSDictionary?, error: NSError?) -> Void)
 // TODO: Make this specific to the appropriate params
 typealias HomeTimelineParams = NSDictionary
 typealias HomeTimelineCompletion = ((tweets: [Tweet]?, error: NSError?) -> Void)
@@ -55,7 +55,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             }
             }, failure: { (error) -> Void in
                 println("Error getting request token: \(error)")
-                self.loginCompletion?(user: nil, error: error)
+                self.loginCompletion?(userData: nil, error: error)
         })
     }
     
@@ -66,19 +66,17 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 
                 self.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                     
-                    let user = User(dictionary: response as NSDictionary)
-                    println("User = \(user.name)")
-                    User.currentUser = user
-                    self.loginCompletion?(user: user, error: nil)
+                    let responseDict = response as NSDictionary
+                    self.loginCompletion?(userData: responseDict, error: nil)
                     
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         println("Error getting user: \(error)")
+                        self.loginCompletion?(userData: nil, error: error)
                 })
                 
-
             }) { (error: NSError!) -> Void in
                 println("Error getting access token: \(error)")
-                self.loginCompletion?(user: nil, error: error)
+                self.loginCompletion?(userData: nil, error: error)
         }
     }
    

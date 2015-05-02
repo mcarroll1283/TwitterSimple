@@ -24,10 +24,8 @@ class ViewController: UIViewController {
 
 
     @IBAction func onLogin(sender: AnyObject) {
-        // TODO: Move this into User class, to fully hide TwitterClient
-        // from view controllers
-        TwitterClient.sharedInstance.login() { (user, error) -> Void in
-            if user != nil {
+        User.loginCurrentUser { (error) -> Void in
+            if error == nil {
                 self.performSegueWithIdentifier("loginSegue", sender: self)
             } else {
                 // handle login error
