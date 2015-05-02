@@ -24,16 +24,15 @@ class ViewController: UIViewController {
 
 
     @IBAction func onLogin(sender: AnyObject) {
-        TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
-        TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "mctwittersimple://oauth"), scope: nil, success: { (credential) -> Void in
-            let maybeAuthUrl = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(credential.token)")
-            if let authUrl = maybeAuthUrl {
-                UIApplication.sharedApplication().openURL(authUrl)
+        // TODO: Move this into User class, to fully hide TwitterClient
+        // from view controllers
+        TwitterClient.sharedInstance.login() { (user, error) -> Void in
+            if user != nil {
+                self.performSegueWithIdentifier("loginSegue", sender: self)
+            } else {
+                // handle login error
             }
-//            UIApplication.sharedApplication().openURL(authURL)
-        }, failure: { (error) -> Void in
-            println("error")
-        })
+        }
     }
 }
 
