@@ -10,10 +10,18 @@ import UIKit
 
 class TweetsViewController: UIViewController {
 
+    var tweets: [Tweet]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // TODO: Move this into Tweet model to hide TwitterClient from view controllers
+        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> Void in
+            println("in TweetsViewController with home timeline tweets")
+            self.tweets = tweets
+            // TODO: the following line, when table view is setup
+            // self.tableView.reloadData
+        })
     }
 
     override func didReceiveMemoryWarning() {
