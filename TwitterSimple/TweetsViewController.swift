@@ -19,10 +19,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         Tweet.getHomeTimelineWithParams(nil, completion: { (tweets, error) in
             if tweets != nil {
                 self.tweets = tweets
-                println("got \(tweets!.count) tweets in TweetsViewController")
                 self.tableView.reloadData()
             } else {
                 // handle error case
+                println("TweetsViewController: error getting home timeline")
             }
         })
         
@@ -41,6 +41,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as TweetCell
+        
+        if let tweets = tweets {
+            let tweetForCell = tweets[indexPath.row]
+            cell.tweet = tweetForCell
+        }
+        
         return cell
     }
     
