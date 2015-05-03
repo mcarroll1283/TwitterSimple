@@ -101,5 +101,15 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             println("favoriteTweet: error")
         }
     }
-   
+    
+    func retweetTweet(tweetIdStr: String) {
+        println("TwitterClient retweetTweet with id: \(tweetIdStr)")
+        let urlString = "https://api.twitter.com/1.1/statuses/retweet/\(tweetIdStr).json"
+//        let params = ["id": tweetIdStr]
+        POST(urlString, parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println("retweetTweet: success")
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("retweetTweet: error: \(error)")
+        }
+    }
 }

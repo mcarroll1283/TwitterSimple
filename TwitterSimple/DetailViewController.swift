@@ -63,6 +63,10 @@ class DetailViewController: UIViewController {
         tweet.favorite()
     }
 
+    @IBAction func onRetweet(sender: AnyObject) {
+        tweet.retweet()
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
