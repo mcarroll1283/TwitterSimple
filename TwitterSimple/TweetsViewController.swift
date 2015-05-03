@@ -25,6 +25,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        title = "Home"
     }
 
     override func didReceiveMemoryWarning() {
