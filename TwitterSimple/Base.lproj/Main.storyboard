@@ -67,28 +67,45 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vQr-mr-fWK" id="D5P-mA-MTw">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZZr-Ib-QCF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZr-Ib-QCF">
                                                     <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Fnf-74-OJw"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Iur-NE-ANX"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbB-EV-18d">
-                                                    <rect key="frame" x="66" y="8" width="149" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbB-EV-18d">
+                                                    <rect key="frame" x="66" y="8" width="36.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EW-k2w">
-                                                    <rect key="frame" x="66" y="26" width="246" height="32"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EW-k2w">
+                                                    <rect key="frame" x="66" y="33" width="246" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxK-US-Veb">
-                                                    <rect key="frame" x="158" y="8" width="94" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxK-US-Veb">
+                                                    <rect key="frame" x="110" y="8" width="30.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CxK-US-Veb" firstAttribute="top" secondItem="D5P-mA-MTw" secondAttribute="top" constant="8" id="2CV-lA-GnL"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nbO-EW-k2w" secondAttribute="bottom" constant="8" id="9f1-TW-qWe"/>
+                                                <constraint firstItem="CxK-US-Veb" firstAttribute="leading" secondItem="rbB-EV-18d" secondAttribute="trailing" constant="8" id="KjX-dS-Isr"/>
+                                                <constraint firstItem="nbO-EW-k2w" firstAttribute="leading" secondItem="ZZr-Ib-QCF" secondAttribute="trailing" constant="8" id="RQD-Df-T7G"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZZr-Ib-QCF" secondAttribute="bottom" constant="8" id="RX6-uK-R6p"/>
+                                                <constraint firstItem="nbO-EW-k2w" firstAttribute="top" secondItem="rbB-EV-18d" secondAttribute="bottom" constant="8" id="Vab-h0-J10"/>
+                                                <constraint firstAttribute="trailing" secondItem="nbO-EW-k2w" secondAttribute="trailing" constant="8" id="ZSe-mw-zKP"/>
+                                                <constraint firstItem="ZZr-Ib-QCF" firstAttribute="top" secondItem="D5P-mA-MTw" secondAttribute="top" constant="8" id="b2g-hP-13j"/>
+                                                <constraint firstItem="rbB-EV-18d" firstAttribute="leading" secondItem="ZZr-Ib-QCF" secondAttribute="trailing" constant="8" id="jKx-KB-H7W"/>
+                                                <constraint firstItem="ZZr-Ib-QCF" firstAttribute="leading" secondItem="D5P-mA-MTw" secondAttribute="leading" constant="8" id="qmR-YK-T6J"/>
+                                                <constraint firstItem="rbB-EV-18d" firstAttribute="top" secondItem="D5P-mA-MTw" secondAttribute="top" constant="8" id="ryc-dI-p1q"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="authorImageView" destination="ZZr-Ib-QCF" id="xGc-k5-KM4"/>
