@@ -11,11 +11,12 @@ import UIKit
 class ComposeViewController: UIViewController {
 
     @IBOutlet weak var tweetTextView: UITextView!
+    var inReplyToIdStr: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        println("ComposeViewController: inReplyToIdStr: \(inReplyToIdStr)")
     }
 
     override func didReceiveMemoryWarning() {

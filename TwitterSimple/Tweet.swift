@@ -12,6 +12,7 @@ class Tweet: NSObject {
     var author: User?
     var text: String?
     var createdAt: NSDate?
+    var idStr: String?
     
     init(dictionary: NSDictionary) {
         if let authorInfo = dictionary["user"] as? NSDictionary {
@@ -32,6 +33,12 @@ class Tweet: NSObject {
             text = tweetText
         } else {
             println("Tweet model: no text")
+        }
+        
+        if let dictIdStr = dictionary["id_str"] as? String {
+            idStr = dictIdStr
+        } else {
+            println("Tweet model: no id_str")
         }
     }
     

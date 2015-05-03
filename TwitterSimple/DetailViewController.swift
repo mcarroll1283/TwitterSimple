@@ -60,14 +60,17 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "replySegue" {
+            println("going to compose view to reply to tweet id: \(tweet.idStr)")
+            let composeVC = segue.destinationViewController as ComposeViewController
+            composeVC.inReplyToIdStr = tweet.idStr
+        }
     }
-    */
 
 }
