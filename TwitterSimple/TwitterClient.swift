@@ -90,5 +90,16 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             println("postTweet: error")
         }
     }
+    
+    func favoriteTweet(tweetIdStr: String) {
+        println("TwitterClient favorite tweet with id: \(tweetIdStr)")
+        let params = ["id": tweetIdStr]
+        let urlString = "https://api.twitter.com/1.1/favorites/create.json"
+        POST(urlString, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println("favoriteTweet: success")
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println("favoriteTweet: error")
+        }
+    }
    
 }

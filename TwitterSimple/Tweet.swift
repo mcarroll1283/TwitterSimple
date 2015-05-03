@@ -42,6 +42,14 @@ class Tweet: NSObject {
         }
     }
     
+    func favorite() {
+        if let idStr = idStr {
+            TwitterClient.sharedInstance.favoriteTweet(idStr)
+        } else {
+            println("Tweet model: can't favorite because it has no idStr")
+        }
+    }
+    
     class func getHomeTimelineWithParams(params: HomeTimelineParams?, completion: HomeTimelineCompletion) {
         TwitterClient.sharedInstance.getHomeTimelineWithParams(params, completion: completion)
     }

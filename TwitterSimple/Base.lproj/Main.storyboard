@@ -189,6 +189,9 @@
                                 <state key="normal" title="Favorite">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onFavorite:" destination="GYx-cp-fpD" eventType="touchUpInside" id="w4A-Rb-44p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-j4-8Y5">
                                 <rect key="frame" x="145" y="253" width="46" height="30"/>
