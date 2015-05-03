@@ -27,7 +27,12 @@ class Tweet: NSObject {
         } else {
             println("Tweet model: no created_at")
         }
-
+        
+        if let tweetText = dictionary["text"] as? String {
+            text = tweetText
+        } else {
+            println("Tweet model: no text")
+        }
     }
     
     class func getHomeTimelineWithParams(params: HomeTimelineParams?, completion: HomeTimelineCompletion) {

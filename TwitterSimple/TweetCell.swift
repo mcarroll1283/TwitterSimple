@@ -12,6 +12,8 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
@@ -28,6 +30,16 @@ class TweetCell: UITableViewCell {
                 }
             } else {
                 println("Error: tweet model with no author")
+            }
+            
+            if let text = tweet.text {
+                tweetTextLabel.text = text
+            } else {
+                println("Error: tweet model with no text")
+            }
+            
+            if tweet.createdAt != nil {
+                timestampLabel.text = tweet.createdAt!.description
             }
 
         }
