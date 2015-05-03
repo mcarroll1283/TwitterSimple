@@ -36,11 +36,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         User.currentUser?.logout()
     }
 
-//    
-//    @IBAction func onCompose(sender: AnyObject) {
-//        println("onCompose")
-//    }
-//    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as TweetCell
         
@@ -79,14 +74,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "detailViewSegue" {
+            let cell = sender as UITableViewCell
+            if let indexPath = tableView.indexPathForCell(cell) {
+                let tweet = tweets![indexPath.row]
+                let detailVC = segue.destinationViewController as DetailViewController
+                detailVC.tweet = tweet
+            } else {
+                println("Error: no index path found for sender in prepareForSegue")
+            }
+        }
     }
-    */
-
 }
