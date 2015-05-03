@@ -36,6 +36,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
          User.currentUser?.logout()
     }
     
+    @IBAction func onCompose(sender: AnyObject) {
+        println("onCompose")
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as TweetCell
         

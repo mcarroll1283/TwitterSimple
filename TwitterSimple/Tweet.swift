@@ -38,4 +38,8 @@ class Tweet: NSObject {
     class func getHomeTimelineWithParams(params: HomeTimelineParams?, completion: HomeTimelineCompletion) {
         TwitterClient.sharedInstance.getHomeTimelineWithParams(params, completion: completion)
     }
+    
+    class func postTweet(tweetText: String) {
+        TwitterClient.sharedInstance.postTweet(tweetText)
+    }
 }
