@@ -33,13 +33,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func onLogout(sender: AnyObject) {
-         User.currentUser?.logout()
+        User.currentUser?.logout()
     }
-    
-    @IBAction func onCompose(sender: AnyObject) {
-        println("onCompose")
-    }
-    
+
+//    
+//    @IBAction func onCompose(sender: AnyObject) {
+//        println("onCompose")
+//    }
+//    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as TweetCell
         

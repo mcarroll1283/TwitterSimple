@@ -27,6 +27,9 @@ class ComposeViewController: UIViewController {
         Tweet.postTweet(tweetTextView.text)
     }
 
+    @IBAction func onCancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
