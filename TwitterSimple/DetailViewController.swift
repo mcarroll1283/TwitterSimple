@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
         if segue.identifier == "replySegue" {
             println("going to compose view to reply to tweet id: \(tweet.idStr)")
             let composeVC = segue.destinationViewController as ComposeViewController
-            composeVC.inReplyToIdStr = tweet.idStr
+            composeVC.inReplyTo = (tweet.idStr!, tweet.author!.screenname!)
         }
     }
 
