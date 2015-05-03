@@ -39,9 +39,12 @@ class TweetCell: UITableViewCell {
             }
             
             if tweet.createdAt != nil {
-                // If less than 24 hours ago, show for example, "10hr"
-                // Otherwise, show DD/MM/YY
-                timestampLabel.text = tweet.createdAt!.description
+                let oneDayAgo = NSDate(timeIntervalSinceNow: 60 * 60 * 24)
+                var timestampText = tweet.createdAt!.shortTimeAgoSinceNow()
+                if tweet.createdAt!.isEarlierThan(oneDayAgo) {
+                    //show DD/MM/YY
+                }
+                timestampLabel.text = timestampText
             }
 
         }

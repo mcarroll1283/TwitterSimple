@@ -4,6 +4,7 @@ platform :ios, '8.0'
 target 'TwitterSimple' do
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
+  pod 'DateTools'
 
 end
 
