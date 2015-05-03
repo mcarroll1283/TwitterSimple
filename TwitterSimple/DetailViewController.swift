@@ -51,7 +51,7 @@ class DetailViewController: UIViewController {
             println("DetailViewController got tweet with no text")
         }
 
-        // Do any additional setup after loading the view.
+        title = "Tweet"
     }
 
     override func didReceiveMemoryWarning() {

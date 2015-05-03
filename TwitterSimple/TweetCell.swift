@@ -39,6 +39,8 @@ class TweetCell: UITableViewCell {
             }
             
             if tweet.createdAt != nil {
+                // If less than 24 hours ago, show for example, "10hr"
+                // Otherwise, show DD/MM/YY
                 timestampLabel.text = tweet.createdAt!.description
             }
 
