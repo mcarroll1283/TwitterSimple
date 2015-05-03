@@ -12,22 +12,19 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
     var tweets: [Tweet]?
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Tweet.getHomeTimelineWithParams(nil, completion: { (tweets, error) in
-            if tweets != nil {
-                self.tweets = tweets
-                self.tableView.reloadData()
-            } else {
-                // handle error case
-                println("TweetsViewController: error getting home timeline")
-            }
-        })
-        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        loadTweetsIntoTableView()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +53,25 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             return 0
         }
+    }
+    
+    func onRefresh() {
+        loadTweetsIntoTableView() {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    private func loadTweetsIntoTableView(onComplete: (()->())?=nil) {
+        Tweet.getHomeTimelineWithParams(nil, completion: { (tweets, error) in
+            if tweets != nil {
+                self.tweets = tweets
+                self.tableView.reloadData()
+            } else {
+                // handle error case
+                println("TweetsViewController: error getting home timeline")
+            }
+            onComplete?()
+        })
     }
 
     /*
