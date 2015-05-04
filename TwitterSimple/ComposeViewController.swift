@@ -11,6 +11,9 @@ import UIKit
 class ComposeViewController: UIViewController {
 
     @IBOutlet weak var tweetTextView: UITextView!
+    @IBOutlet weak var currentUserImageView: UIImageView!
+    @IBOutlet weak var currentUserNameLabel: UILabel!
+    @IBOutlet weak var currentUserScreenNameLabel: UILabel!
     // This tuple contains the tweet id and the tweet author screenname.
     // We need the screenname because unless the tweet text contains @<screenname>,
     // the reply to ID will be ignored by the API. So we want to pre-fill the text
@@ -23,6 +26,12 @@ class ComposeViewController: UIViewController {
         if let inReplyTo = inReplyTo {
             tweetTextView.text = "@\(inReplyTo.1) "
         }
+        let urlString = User.currentUser!.profileImageUrl!
+        currentUserImageView.setImageWithURL(NSURL(string: urlString))
+        currentUserNameLabel.text = User.currentUser!.name
+        currentUserScreenNameLabel.text = User.currentUser!.screenname
+        
+        tweetTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
