@@ -39,10 +39,13 @@ class TweetCell: UITableViewCell {
             }
             
             if tweet.createdAt != nil {
-                let oneDayAgo = NSDate(timeIntervalSinceNow: 60 * 60 * 24)
+                let secondsPerDay = (60 * 60 * 24) as Double
+                let oneDayAgo = NSDate(timeIntervalSinceNow: -1.0 * secondsPerDay)
                 var timestampText = tweet.createdAt!.shortTimeAgoSinceNow()
                 if tweet.createdAt!.isEarlierThan(oneDayAgo) {
-                    //show DD/MM/YY
+                    let a = tweet.createdAt!.formattedDateWithStyle(NSDateFormatterStyle.LongStyle)
+                    let b = oneDayAgo.formattedDateWithStyle(NSDateFormatterStyle.LongStyle)
+                    timestampText = tweet.createdAt!.formattedDateWithStyle(NSDateFormatterStyle.ShortStyle)
                 }
                 timestampLabel.text = timestampText
             }
