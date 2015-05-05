@@ -8,12 +8,17 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+let maxTweetLength = 140
+
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var currentUserImageView: UIImageView!
     @IBOutlet weak var currentUserNameLabel: UILabel!
     @IBOutlet weak var currentUserScreenNameLabel: UILabel!
+    @IBOutlet weak var charsLeftLabel: UILabel!
+    
+    
     // This tuple contains the tweet id and the tweet author screenname.
     // We need the screenname because unless the tweet text contains @<screenname>,
     // the reply to ID will be ignored by the API. So we want to pre-fill the text
@@ -31,7 +36,11 @@ class ComposeViewController: UIViewController {
         currentUserNameLabel.text = User.currentUser!.name
         currentUserScreenNameLabel.text = User.currentUser!.screenname
         
+        tweetTextView.delegate = self
+        
         tweetTextView.becomeFirstResponder()
+
+        updateCharsLeft()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +63,16 @@ class ComposeViewController: UIViewController {
     @IBAction func onCancel(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    func textViewDidChange(textView: UITextView) {
+        updateCharsLeft()
+    }
+    
+    private func updateCharsLeft() {
+        let enteredTweetLength = countElements(tweetTextView.text)
+        charsLeftLabel.text = "\(maxTweetLength - enteredTweetLength)"
+    }
+    
     /*
     // MARK: - Navigation
 
