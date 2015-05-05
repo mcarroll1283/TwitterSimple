@@ -72,16 +72,22 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EW-k2w">
+                                                    <rect key="frame" x="66" y="25" width="205" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CxK-US-Veb">
                                                     <rect key="frame" x="110" y="10" width="30.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-EW-k2w">
-                                                    <rect key="frame" x="66" y="25" width="205" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BK8-yq-y9t">
+                                                    <rect key="frame" x="256" y="10" width="30.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -92,8 +98,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="nbO-EW-k2w" secondAttribute="trailing" constant="8" id="9Ym-uw-5et"/>
                                                 <constraint firstItem="rbB-EV-18d" firstAttribute="top" secondItem="D5P-mA-MTw" secondAttribute="top" constant="8" id="Axz-MA-qg0"/>
                                                 <constraint firstItem="ZZr-Ib-QCF" firstAttribute="leading" secondItem="D5P-mA-MTw" secondAttribute="leading" constant="8" id="B69-oK-GdU"/>
+                                                <constraint firstItem="BK8-yq-y9t" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CxK-US-Veb" secondAttribute="trailing" id="BFX-TW-oD7"/>
                                                 <constraint firstItem="CxK-US-Veb" firstAttribute="leading" secondItem="rbB-EV-18d" secondAttribute="trailing" constant="7.5" id="KHd-NX-s6k"/>
+                                                <constraint firstItem="CxK-US-Veb" firstAttribute="baseline" secondItem="BK8-yq-y9t" secondAttribute="baseline" id="MnW-HS-qEI"/>
                                                 <constraint firstItem="rbB-EV-18d" firstAttribute="leading" secondItem="ZZr-Ib-QCF" secondAttribute="trailing" constant="8" id="U22-J6-CFb"/>
+                                                <constraint firstAttribute="trailing" secondItem="BK8-yq-y9t" secondAttribute="trailing" id="UEE-d1-1EC"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="nbO-EW-k2w" secondAttribute="bottom" constant="8" id="qxa-2o-jPg"/>
                                                 <constraint firstItem="rbB-EV-18d" firstAttribute="baseline" secondItem="CxK-US-Veb" secondAttribute="baseline" id="r4z-Eh-Rdh"/>
                                                 <constraint firstItem="ZZr-Ib-QCF" firstAttribute="top" secondItem="D5P-mA-MTw" secondAttribute="top" constant="8" id="sSH-kx-uKe"/>
@@ -102,7 +111,8 @@
                                         <connections>
                                             <outlet property="authorImageView" destination="ZZr-Ib-QCF" id="xGc-k5-KM4"/>
                                             <outlet property="nameLabel" destination="rbB-EV-18d" id="V7y-GH-DjK"/>
-                                            <outlet property="timestampLabel" destination="CxK-US-Veb" id="YLh-ld-k82"/>
+                                            <outlet property="screenNameLabel" destination="CxK-US-Veb" id="bsi-uz-A6o"/>
+                                            <outlet property="timestampLabel" destination="BK8-yq-y9t" id="CKs-jC-7qN"/>
                                             <outlet property="tweetTextLabel" destination="nbO-EW-k2w" id="cMT-xl-ZZJ"/>
                                             <segue destination="GYx-cp-fpD" kind="push" identifier="detailViewSegue" id="AaB-p7-S6i"/>
                                         </connections>
@@ -311,6 +321,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="KqU-LL-eZK"/>
+        <segue reference="NOg-nL-DsZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     
     var tweet: Tweet! {
@@ -27,6 +28,11 @@ class TweetCell: UITableViewCell {
                     nameLabel.text = author.name!
                 } else {
                     println("Error: tweet model with author with no name")
+                }
+                if author.screenname != nil {
+                    screenNameLabel.text = "@\(author.screenname!)"
+                } else {
+                    println("Error: tweet model with author with no screenname")
                 }
             } else {
                 println("Error: tweet model with no author")
