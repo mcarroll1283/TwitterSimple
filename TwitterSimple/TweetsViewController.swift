@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate {
 
     var tweets: [Tweet]?
     @IBOutlet weak var tableView: UITableView!
@@ -79,6 +79,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println("in tweetsviewcontroller prepareforsegue")
         if segue.identifier == "detailViewSegue" {
             let cell = sender as UITableViewCell
             if let indexPath = tableView.indexPathForCell(cell) {
@@ -88,10 +89,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             } else {
                 println("Error: no index path found for sender in prepareForSegue")
             }
+        } else if segue.identifier == "composeSegue" {
+            let composeVC = segue.destinationViewController as ComposeViewController
+            composeVC.delegate = self
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func composeViewController(composeViewController: UIViewController, didComposeTweet didCompose: Bool) {
+        loadTweetsIntoTableView()
     }
 }

@@ -80,14 +80,16 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         }
     }
     
-    func postTweet(tweetText: String, inReplyToIdStr: String="") {
+    func postTweet(tweetText: String, inReplyToIdStr: String="", complete:(()->())?=nil) {
         println("TwitterClient compose tweet: \(tweetText), in reply to \(inReplyToIdStr)")
         let params = ["status": tweetText, "in_reply_to_status_id": inReplyToIdStr]
         let urlString = "1.1/statuses/update.json"
         POST(urlString, parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             println("postTweet: success")
+            complete?()
         }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
             println("postTweet: error")
+            complete?()
         }
     }
     
